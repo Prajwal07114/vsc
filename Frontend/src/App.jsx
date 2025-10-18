@@ -1,17 +1,27 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
-
+import {Routes,Route, Navigate} from "react-router"
+import HomePage from './pages/HomePage';
+import AuthPage from './pages/AuthPage';
+import toast from 'react-hot-toast';
 const App = () => {
   return (
-    
-       <header>
-      <SignedOut >
-        <SignInButton mode="modal"/>
-      </SignedOut>
+       <>
+          <button onClick={()=>toast.success("congrats")}>Button</button>
+
       <SignedIn>
-        <UserButton />
+        <Routes>
+          <Route path='/' element={<HomePage />} ></Route>
+          <Route path='/auth' element={<Navigate to={"/"} replace />}></Route>
+        </Routes>
       </SignedIn>
-    </header>
-  
+
+ <SignedOut >
+        <Routes>
+          <Route path='/auth' element={<AuthPage />} ></Route>
+          <Route path='*' element={<Navigate to={"/auth"} replace />}></Route>
+        </Routes>
+      </SignedOut>
+  </>
   )
 }
 
