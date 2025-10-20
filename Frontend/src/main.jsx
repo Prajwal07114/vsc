@@ -9,6 +9,7 @@ import {BrowserRouter} from "react-router"
   QueryClientProvider,
 } from '@tanstack/react-query'
 import {Toaster} from "react-hot-toast"
+import AuthProvider from './provider/AuthProvider.jsx'
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
 if (!PUBLISHABLE_KEY) {
@@ -20,7 +21,9 @@ createRoot(document.getElementById('root')).render(
      <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
       <BrowserRouter>
       <QueryClientProvider client={queryClient}>
+        <AuthProvider>
         <App />
+        </AuthProvider>
         <Toaster />
         </QueryClientProvider>
         </BrowserRouter>
