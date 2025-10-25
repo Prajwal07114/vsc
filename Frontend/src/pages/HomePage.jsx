@@ -5,7 +5,7 @@ import { HashIcon, PlusIcon, UsersIcon } from "lucide-react";
 
 // 💡 FIX: Import the CustomChannelHeader component (ReferenceError fix)
 // If you set up an alias like '@': 'src'
-//import CustomChannelHeader from "../components/CustomChannelHeader"
+import CustomChannelHeader from "../components/CustomChannelHeader"
 // 💡 NECESSARY IMPORTS for the components used in your JSX
 import { useStreamChat } from "../hooks/useStreamChat";
 import PageLoader from "../components/PageLoader";
