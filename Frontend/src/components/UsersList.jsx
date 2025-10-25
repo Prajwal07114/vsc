@@ -3,7 +3,6 @@ import { useCallback } from "react";
 import { useSearchParams } from "react-router";
 import { useChatContext } from "stream-chat-react";
 
-import * as Sentry from "@sentry/react";
 import { CircleIcon } from "lucide-react";
 
 const UsersList = ({ activeChannel }) => {
@@ -51,14 +50,9 @@ const UsersList = ({ activeChannel }) => {
       await channel.watch();
       setSearchParams({ channel: channel.id });
     } catch (error) {
-      console.log("Error creating DM", error),
-        Sentry.captureException(error, {
-          tags: { component: "UsersList" },
-          extra: {
-            context: "create_direct_message",
-            targetUserId: targetUser?.id,
-          },
-        });
+      console.log("Error creating DM")
+        
+        
     }
   };
 
