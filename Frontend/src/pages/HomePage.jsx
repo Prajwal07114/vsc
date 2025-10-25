@@ -4,8 +4,8 @@ import { useSearchParams } from "react-router-dom"; // Assuming you are using 'r
 import { HashIcon, PlusIcon, UsersIcon } from "lucide-react";
 
 // 💡 FIX: Import the CustomChannelHeader component (ReferenceError fix)
-import CustomChannelHeader from "../components/CustomChannelHeader.jsx"
-
+// If you set up an alias like '@': 'src'
+//import CustomChannelHeader from "../components/CustomChannelHeader"
 // 💡 NECESSARY IMPORTS for the components used in your JSX
 import { useStreamChat } from "../hooks/useStreamChat";
 import PageLoader from "../components/PageLoader";
