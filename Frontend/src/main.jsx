@@ -20,8 +20,12 @@ import AuthProvider from "./provider/AuthProvider.jsx";
 
 const queryClient = new QueryClient();
 
-// Import your Publishable Key
-VITE_CLERK_PUBLISHABLE_KEY=pk_test_Z3VpZGVkLWN1Yi04NS5jbGVyay5hY2NvdW50cy5kZXYk
+// In index.jsx
+
+// ⭐️ CORRECTED FIX: Add double quotes around the key string
+const PUBLISHABLE_KEY = "pk_test_Z3VpZGVkLWN1Yi04NS5jbGVyay5hY2NvdW50cy5kZXYk"; 
+
+// ... rest of your code
 
 
 if (!PUBLISHABLE_KEY) {
