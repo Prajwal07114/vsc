@@ -21,7 +21,8 @@ import AuthProvider from "./provider/AuthProvider.jsx";
 const queryClient = new QueryClient();
 
 // Import your Publishable Key
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+VITE_CLERK_PUBLISHABLE_KEY=pk_test_Z3VpZGVkLWN1Yi04NS5jbGVyay5hY2NvdW50cy5kZXYk
+
 
 if (!PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");
