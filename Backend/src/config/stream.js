@@ -1,5 +1,5 @@
 import {StreamChat} from "stream-chat";
-import {ENV} from "../config/env.js";
+import ENV from "../config/env.js";
 
 
 const streamClient = StreamChat.getInstance(ENV.STREAM_API_KEY,ENV.STREAM_SECRET_KEY)
@@ -26,12 +26,14 @@ export const deleteStreamUser = async (userId) =>{
 
 
 
-export const generateStreamToken = (userId)=>{
+export const generateStreamToken = (userId) => {
   try {
-    const userIdString = userId.Id.toString();
-    return streamClient.createToken(userIdString)
+    if (!userId) throw new Error("userId is missing");
+
+    // Clerk userId is already a string, no need for .Id or .toString()
+    return streamClient.createToken(userId);
   } catch (error) {
-    console.log("Error generating Stream in token",error);
+    console.log("Error generating Stream token", error);
     return null;
   }
-}
+};
