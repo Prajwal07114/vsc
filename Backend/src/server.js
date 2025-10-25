@@ -12,7 +12,10 @@ import cors from "cors";
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }));
+// On vsc-three.vercel.app server startup:
+// ENV.CLIENT_URL will be 'https://vsc-amber.vercel.app'
+app.use(cors({ origin: 'https://vsc-amber.vercel.app', credentials: true }));
+
 app.use(clerkMiddleware()); // req.auth will be available in the request object
 
 
