@@ -50,7 +50,7 @@ const CallPage = () => {
           token: tokenData.token,
         });
 
-        const callInstance = videoClient.call("default", callId);
+const callInstance = videoClient.call("messaging", callId);
         await callInstance.join({ create: true });
 
         setClient(videoClient);
