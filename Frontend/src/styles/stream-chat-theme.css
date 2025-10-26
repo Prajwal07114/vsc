@@ -694,12 +694,54 @@
   position: relative;
 }
 
+/* ------------------------------------------------ */
+/* SCROLLING FIXES ADDED HERE                       */
+/* ------------------------------------------------ */
+
 .chat-main {
   flex: 1;
   background: rgba(255, 255, 255, 0.98);
   border-radius: 0 2rem 2rem 0;
-  overflow: hidden;
+  /* CRITICAL: Must be hidden so inner element can scroll */
+  overflow: hidden; 
+  /* ADD: Ensure it uses flex to arrange header/messages/input vertically */
+  display: flex;
+  flex-direction: column;
 }
+
+/* Target the Stream Chat's main panel (Window) wrapper */
+.str-chat__main-panel {
+    /* Set height to 100% to fill the chat-main container */
+    height: 100%;
+    /* Use flex column layout to stack header, messages, and input */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Target the Stream Chat's message list container (the scrollable area) */
+.str-chat__main-panel .str-chat__window-main {
+    /* Allow this area to grow and take all available vertical space */
+    flex-grow: 1; 
+    flex-shrink: 1;
+    /* 🏆 CRITICAL FIX: Enable vertical scrolling for content overflow */
+    overflow-y: auto; 
+    overflow-x: hidden;
+    /* Ensure no padding/margin interferes with flex calculations */
+    min-height: 0; 
+}
+
+/* Ensure the Message Input stays fixed at the bottom */
+.str-chat__message-input-wrapper {
+    flex-shrink: 0; /* Prevents the input from shrinking */
+    /* Ensure the input area does not scroll */
+    overflow: visible;
+}
+
+
+/* ------------------------------------------------ */
+/* END SCROLLING FIXES                              */
+/* ------------------------------------------------ */
+
 
 .radio-option {
   display: flex;
