@@ -488,24 +488,34 @@
   flex-direction: column;
 }
 
-.team-channel-list__content::-webkit-scrollbar {
+/* 🏆 UNIFIED SCROLLBAR STYLES (Applies to both channels list and user list) */
+.team-channel-list__content::-webkit-scrollbar,
+.team-channel-list__users::-webkit-scrollbar 
+{
   width: 6px;
 }
 
-.team-channel-list__content::-webkit-scrollbar-track {
+.team-channel-list__content::-webkit-scrollbar-track,
+.team-channel-list__users::-webkit-scrollbar-track 
+{
   background: rgba(255, 255, 255, 0.05);
   border-radius: 3px;
 }
 
-.team-channel-list__content::-webkit-scrollbar-thumb {
+.team-channel-list__content::-webkit-scrollbar-thumb,
+.team-channel-list__users::-webkit-scrollbar-thumb 
+{
   background: linear-gradient(180deg, rgba(116, 58, 213, 0.6) 0%, rgba(74, 21, 75, 0.6) 100%);
   border-radius: 3px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.team-channel-list__content::-webkit-scrollbar-thumb:hover {
+.team-channel-list__content::-webkit-scrollbar-thumb:hover,
+.team-channel-list__users::-webkit-scrollbar-thumb:hover 
+{
   background: linear-gradient(180deg, rgba(116, 58, 213, 0.8) 0%, rgba(74, 21, 75, 0.8) 100%);
 }
+/* END UNIFIED SCROLLBAR STYLES */
 
 .brand-container {
   display: flex;
@@ -563,7 +573,6 @@
 .create-channel-section {
   padding: 1.25rem 1.5rem;
   position: relative;
-  /* ADDED: Ensure it is a fixed height part of the flex container */
   flex-shrink: 0;
 }
 
@@ -619,7 +628,7 @@
 .section-header {
   padding: 1.5rem 1.5rem 0.75rem;
   position: relative;
-  flex-shrink: 0; /* ADDED: Ensure headers don't shrink */
+  flex-shrink: 0; 
 }
 
 .section-header.direct-messages {
@@ -660,7 +669,6 @@
 .channel-sections {
   position: relative;
   z-index: 1;
-  /* ADDED: Must be flexible to allocate remaining space */
   display: flex;
   flex-direction: column;
   flex: 1; 
@@ -670,7 +678,7 @@
 .channels-list {
   padding: 0.5rem 1rem 1rem;
   position: relative;
-  flex-shrink: 0; /* Ensure channels list doesn't take too much vertical space if it can be small */
+  flex-shrink: 0; 
 }
 
 .loading-message,
@@ -702,18 +710,18 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* 🏆 CRITICAL FIX FOR USER LIST SCROLLING */
+/* 🏆 CRITICAL FIX FOR USER LIST SCROLLING AND VISIBILITY */
 .team-channel-list__users {
-  /* CRITICAL: Allow this section to grow and consume remaining vertical space */
   flex-grow: 1;
   flex-shrink: 1;
+  /* Set minimum space to show approx. 5 items (5 * ~60px) */
+  min-height: 300px; 
   min-height: 0; 
   
-  /* CRITICAL: Enable scrollbar inside this section */
+  /* Enable scrollbar inside this section */
   overflow-y: auto; 
   overflow-x: hidden;
   
-  /* Retained original styles */
   padding: 0.5rem 1rem 1rem;
   position: relative;
 }
@@ -724,13 +732,12 @@
   flex: 1;
   background: rgba(255, 255, 255, 0.98);
   border-radius: 0 2rem 2rem 0;
-  /* CRITICAL for message scrolling */
   overflow: hidden; 
   display: flex;
   flex-direction: column;
 }
 
-/* Fix for Message List Scrolling (already discussed) */
+/* Fix for Message List Scrolling */
 .str-chat__main-panel {
     height: 100%;
     display: flex;
